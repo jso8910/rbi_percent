@@ -1,0 +1,4 @@
+venv/
+downloads/
+chadwick_csv/
+base_out_weights.csv
