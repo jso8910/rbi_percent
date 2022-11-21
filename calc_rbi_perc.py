@@ -16,6 +16,10 @@ def rbi_perc(plays: list[Dict[str, str]], player_id: str | None) -> float:
     for play in plays:
         if play["BAT_ID"] != player_id and player_id is not None:
             continue
+
+        # If it isn't in these values, it isn't a finished PA. Otherwise some RISP will be double counted
+        if not int(play["EVENT_CD"]) in [2, 3, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]:
+            continue
         n_risp = 0
         if play["BASE2_RUN_ID"]:
             n_risp += 1
